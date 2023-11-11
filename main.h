@@ -27,5 +27,6 @@ void pickUpMarker();
 void dropMarker();
 int isCarryingAMarker();
 void robotSearch();
+int nextMove(int stats[4], int moveToMake[2]);
 void traceBackSteps(int numOfMoves);
 int searchedSquareAhead();

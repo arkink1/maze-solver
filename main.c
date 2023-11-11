@@ -251,27 +251,8 @@ void robotSearch() {
             --markersLeft;
             numOfMoves = 0;
         } else {
-            stats[0] = 100; stats[1] = 100; stats[2] = 100; stats[3] = 100;
-            // Rotate robot 360 degrees and check the board matrix value of each square ahead
-            if (canMoveForward()) { stats[0] = searchedSquareAhead(); }
-            right();
-            if (canMoveForward()) { stats[1] = searchedSquareAhead(); }
-            left();
-            left();
-            if (canMoveForward()) { stats[2] = searchedSquareAhead(); }
-            left();
-            if (canMoveForward()) { stats[3] = searchedSquareAhead(); }
-            left();
-            left();
-            moveToMake[0] = 0; moveToMake[1] = 0;
-            // Loop through values of squares, move to square with least value
-            for (int m = 0; m < 4; ++m) {
-                if (m == 0) { moveToMake[0] = m; moveToMake[1] = stats[m]; }
-                else {
-                    if ((stats[m] != 0) && (stats[m] < moveToMake[1])) { moveToMake[0] = m; moveToMake[1] = stats[m]; }
-                }
-            }
-            switch(moveToMake[0]) {
+            // Turn robot and move forward depending on the value the function returns
+            switch(nextMove(stats, moveToMake)) {
                 case 0:
                     forward(); moves[numOfMoves] = 1; ++numOfMoves;
                     break;
@@ -293,6 +274,30 @@ void robotSearch() {
             board[robot.xCoord][robot.yCoord] += 1;
         }
     }
+}
+
+int nextMove(int stats[4], int moveToMake[2]) {
+    stats[0] = 100; stats[1] = 100; stats[2] = 100; stats[3] = 100;
+    // Rotate robot 360 degrees and check the board matrix value of each square ahead
+    if (canMoveForward()) { stats[0] = searchedSquareAhead(); }
+    right();
+    if (canMoveForward()) { stats[1] = searchedSquareAhead(); }
+    left();
+    left();
+    if (canMoveForward()) { stats[2] = searchedSquareAhead(); }
+    left();
+    if (canMoveForward()) { stats[3] = searchedSquareAhead(); }
+    left();
+    left();
+    moveToMake[0] = 0; moveToMake[1] = 0;
+    // Loop through values of squares, return square with least value
+    for (int m = 0; m < 4; ++m) {
+        if (m == 0) { moveToMake[0] = m; moveToMake[1] = stats[m]; }
+        else {
+            if ((stats[m] != 0) && (stats[m] < moveToMake[1])) { moveToMake[0] = m; moveToMake[1] = stats[m]; }
+        }
+    }
+    return moveToMake[0];
 }
 
 void traceBackSteps(int numOfMoves) {
