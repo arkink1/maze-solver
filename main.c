@@ -8,7 +8,7 @@
 
 // Declare global variables
 static Robot robot;
-int sleepTime = 50;
+int sleepTime = 25;
 int homeSquare[2];
 int board[10][10];
 int numOfMarkers;
@@ -39,7 +39,12 @@ void fileToBoard(char filename[], int numSymbol) {
             if (count % 2 == 0) {
                 numX = num;
             } else {
-                board[numX][num] = numSymbol;
+                // Only add marker/block if not home square
+                if (numX != homeSquare[0] || num != homeSquare[1]) {
+                    board[numX][num] = numSymbol;
+                } else {
+                    count -= 2; // Decrease count for numOfMarkers calculation
+                }
             }
             ++count;
             // Break after 10 markers added
