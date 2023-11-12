@@ -12,6 +12,7 @@ int sleepTime = 50;
 int homeSquare[2];
 int board[10][10];
 int numOfMarkers;
+int numMarkersReturned = 0;
 marker markers[10]; // Maximum of 10 markers
 int moves[1024];
 
@@ -130,6 +131,15 @@ void drawMarkers() {
             // If marker returned to home square, draw small marker (so home square can still be identified)
             if (markers[i].xCoord == homeSquare[0] && markers[i].yCoord == homeSquare[1]) {
                 fillRect(60+40*markers[i].xCoord, 60+40*(9-markers[i].yCoord), 20, 20);
+                char numMarkerString[2] = "0";
+                sprintf(numMarkerString, "%d", numMarkersReturned);
+                setColour(black);
+                if (numMarkersReturned < 10) {
+                    drawString(numMarkerString, 67+40*markers[i].xCoord, 75+40*(9-markers[i].yCoord));
+                } else {
+                    drawString(numMarkerString, 62+40*markers[i].xCoord, 75+40*(9-markers[i].yCoord));
+                }
+                setColour(gray);
             } else {
                 fillRect(50+40*markers[i].xCoord, 50+40*(9-markers[i].yCoord), 40, 40);
             }
@@ -249,6 +259,7 @@ void robotSearch() {
             traceBackSteps(numOfMoves);
             dropMarker();
             --markersLeft;
+            ++numMarkersReturned;
             numOfMoves = 0;
         } else {
             // Turn robot and move forward depending on the value the function returns
@@ -271,7 +282,7 @@ void robotSearch() {
                     break;
             }
             // Increment the value of the square (keep track how many times the square has been visited for comparison)
-            board[robot.xCoord][robot.yCoord] += 1;
+            ++board[robot.xCoord][robot.yCoord];
         }
     }
 }
