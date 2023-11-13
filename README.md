@@ -9,7 +9,7 @@ To run the program, run the following command:
 `./main | java -jar drawapp-2.0.jar`  
 Or, if you want to specify a starting point and direction for the robot, enter the x and y coordinates from 0-9 and the direction (north, east, south, west) separated by spaces. For example:  
 `./main 4 4 west | java -jar drawapp-2.0.jar`  
-This will initialise the home square to (3, 3) on the 0-9 scale.
+This will initialise the home square to (4, 4) on the 0-9 scale.
 
 ## Changing the coordinates of blocks and markers
 To change the coordinates of blocks and markers, change the values in `blocks.txt` and `markers.txt` files. One set of coordinates can be entered on one line, with the x and y coordinate separated by a space. For example:  
