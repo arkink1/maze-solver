@@ -8,7 +8,7 @@ To compile the program, run the following command:
 To run the program, run the following command:  
 `./main | java -jar drawapp-2.0.jar`  
 Or, if you want to specify a starting point and direction for the robot, enter the x and y coordinates from 0-9 and the direction (north, east, south, west) separated by spaces. For example:  
-`./main 3 3 east | java -jar drawapp-2.0.jar`  
+`./main 4 4 west | java -jar drawapp-2.0.jar`  
 This will initialise the home square to (3, 3) on the 0-9 scale.
 
 ## Changing the coordinates of blocks and markers
