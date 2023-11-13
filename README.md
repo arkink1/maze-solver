@@ -3,7 +3,7 @@ All 6 stages of the coursework have been completed.
 
 ## Compiling and running the program
 To compile the program, run the following command:  
-`gcc -o main main.c graphics.c -lm`
+`gcc -o main main.c graphics.c`
 
 To run the program, run the following command:  
 `./main | java -jar drawapp-2.0.jar`  
@@ -23,5 +23,5 @@ The window size is set to 500x500 with a 10x10 board centered inside it. The rob
 
 The robot moves to the square adjacent to it that it has visited the least previously. It does this until it finds a marker and then traces back its steps to the home square. This continues until every marker has been returned. It keeps track of how many times it has visited a square by adjusting the value of the square in the 2D board array. Thus, it does not find the best path, but will eventually find all the markers that are not closed off by blocks.
 
-To change the speed of the robot, the variable `sleepTime` can be adjusted on line 11 of `main.c`:  
+To change the speed of the robot, the variable `sleepTime` can be adjusted on line 10 of `main.c`:  
 `int sleepTime = 40;`

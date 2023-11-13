@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "graphics.h"
 #include "main.h"
-#include <math.h>
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
