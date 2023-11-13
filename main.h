@@ -3,19 +3,30 @@ typedef struct {
     int yCoord;
     char direction;
     int holdingMarker;
-} robot;
+} Robot;
 
 typedef struct {
     int xCoord;
     int yCoord;
-    int holdingMarker;
+    int status;
 } marker;
 
+void fileToBoard(char filename[], int numSymbol);
+void initialiseBoard();
 void drawGrid();
-void drawRobot(robot);
-void drawMarker(marker);
-void forward(robot *, marker);
-void left(robot *, marker);
-void right(robot *, marker);
-int atMarker(robot, marker);
-int canMoveForward(robot);
+void drawRobot();
+void drawMarkers();
+void drawForeground();
+void forward();
+void left();
+void right();
+int atMarker();
+int atHome();
+int canMoveForward();
+void pickUpMarker();
+void dropMarker();
+int isCarryingAMarker();
+void robotSearch();
+int nextMove(int stats[4], int moveToMake[2]);
+void traceBackSteps(int numOfMoves);
+int searchedSquareAhead();
