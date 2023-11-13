@@ -8,7 +8,7 @@
 
 // Declare global variables
 static Robot robot;
-int sleepTime = 25;
+int sleepTime = 40;
 int homeSquare[2];
 int board[10][10];
 int numOfMarkers;
@@ -62,13 +62,13 @@ void fileToBoard(char filename[], int numSymbol) {
 
 void initialiseBoard() {
     // Initialise values on board matrix
-    fileToBoard("blocks.txt", 3); // Blocks have value 3
-    fileToBoard("markers.txt", 2); // Markers have value 2
-    board[homeSquare[0]][homeSquare[1]] = 1; // Home square has value 1
+    fileToBoard("blocks.txt", 3); // Blocks = 3
+    fileToBoard("markers.txt", 2); // Markers = 2
+    board[homeSquare[0]][homeSquare[1]] = 1; // Home square = 1
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
             if (board[i][j] != 1 && board[i][j] != 2 && board[i][j] != 3) {
-                board[i][j] = 4; // Default, free square has value 4
+                board[i][j] = 4; // Default, free square = 4
             }
         }
     }
