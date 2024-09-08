@@ -1,5 +1,5 @@
-# COMP0002 C Programming Coursework
-All 6 stages of the coursework have been completed.
+# Maze Generator & Solver
+Automatically generates a custom n x n maze and solves it. 
 
 ## Compiling and running the program
 To compile the program, run the following command:  
